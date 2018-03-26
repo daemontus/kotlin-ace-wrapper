@@ -1,5 +1,12 @@
 package ace
 
+external interface MirrorModule {
+
+    @JsName("Mirror")
+    val mirror: JsClass<Mirror>
+
+}
+
 external interface Mirror {
 
     @JsName("doc")
