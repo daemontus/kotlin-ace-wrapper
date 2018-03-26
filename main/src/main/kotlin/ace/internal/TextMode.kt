@@ -12,7 +12,7 @@ external interface TextMode {
 
     val tokenizer: Tokenizer<*, *>
 
-    fun createWorker(session: EditSession): WorkerClient
+    fun createWorker(session: EditSession): WorkerClient?
 
 }
 

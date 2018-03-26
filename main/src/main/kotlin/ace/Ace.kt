@@ -24,4 +24,9 @@ external interface Ace {
 
     fun <T: Any> require(moduleName: String): T
 
+    /**
+     * Define a new Ace module at given [path] using a given [init] function.
+     */
+    fun define(path: String, dependencies: Array<String>, init: (dynamic, dynamic) -> dynamic)
+
 }
