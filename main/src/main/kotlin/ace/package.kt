@@ -2,6 +2,7 @@ package ace
 
 fun Module.Internal.cursor() = "ace/layer/cursor"
 fun Module.Internal.textMode() = "ace/mode/text"
+fun Module.Internal.workerClient() = "ace/worker/worker_client"
 
 fun Module.backgroundTokenizer() = "ace/background_tokenizer"
 fun Module.editor() = "ace/editor"
