@@ -15,6 +15,11 @@ fun Anchor.removeOnChangeListener(eventListener: EventListener<Anchor.Change>) {
     this.off("change", eventListener)
 }
 
+external interface AnchorModule {
+    @JsName("Anchor")
+    val anchor: JsClass<Anchor>
+}
+
 /**
  * https://ace.c9.io/#nav=api&api=anchor
  */

@@ -124,6 +124,10 @@ fun EditSession.removeOnChangeListener(eventListener: EventListener<Document.Del
     this.off("change", eventListener)
 }
 
+external interface EditSessionModule {
+    @JsName("EditSession")
+    val editSession: JsClass<EditSession>
+}
 
 /**
  * https://ace.c9.io/#nav=api&api=edit_session

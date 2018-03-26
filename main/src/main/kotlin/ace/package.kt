@@ -1,43 +1,15 @@
 package ace
 
-object Module {
+fun Module.Internal.cursor() = "ace/layer/cursor"
+fun Module.Internal.textMode() = "ace/mode/text"
 
-    object Internal {
-        val eventEmitter = "ace/lib/event_emitter"
-    }
-
-    val anchor = "ace/anchor"
-    val backgroundTokenizer = "ace/background_tokenizer"
-    val document = "ace/document"
-    val editSession = "ace/edit_session"
-
-}
-
-@Suppress("NOTHING_TO_INLINE", "UNUSED_PARAMETER")
-private inline fun usedInJs(any: Any?) {}
-
-internal fun <T: Any> constructor0Arg(ctor: JsClass<T>): T {
-    usedInJs(ctor)
-    return js("new ctor()") as T
-}
-
-
-internal fun <T: Any> constructor1Arg(ctor: JsClass<T>, arg: Any?): T {
-    usedInJs(ctor); usedInJs(arg)
-    return js("new ctor(arg)") as T
-}
-
-internal fun <T: Any> constructor2Arg(ctor: JsClass<T>, arg1: Any?, arg2: Any?): T {
-    usedInJs(ctor); usedInJs(arg1); usedInJs(arg2)
-    return js("new ctor(arg1, arg2)") as T
-}
-
-internal fun <T: Any> constructor3Arg(ctor: JsClass<T>, arg1: Any?, arg2: Any?, arg3: Any?): T {
-    usedInJs(ctor); usedInJs(arg1); usedInJs(arg2); usedInJs(arg3)
-    return js("new ctor(arg1, arg2, arg3)") as T
-}
-
-internal fun <T: Any> constructor4Arg(ctor: JsClass<T>, arg1: Any?, arg2: Any?, arg3: Any?, arg4: Any?): T {
-    usedInJs(ctor); usedInJs(arg1); usedInJs(arg2); usedInJs(arg3); usedInJs(arg4)
-    return js("new ctor(arg1, arg2, arg3, arg4)") as T
-}
+fun Module.backgroundTokenizer() = "ace/background_tokenizer"
+fun Module.editor() = "ace/editor"
+fun Module.editSession() = "ace/edit_session"
+fun Module.scrollBar() = "ace/scrollbar"
+fun Module.search() = "ace/search"
+fun Module.selection() = "ace/selection"
+fun Module.tokenIterator() = "ace/token_iterator"
+fun Module.tokenizer() = "ace/tokenizer"
+fun Module.undoManager() = "ace/undomanager"
+fun Module.virtualRenderer() = "ace/virtual_renderer"

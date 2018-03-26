@@ -11,6 +11,11 @@ typealias EventHandler<E> = (E, EventEmitter) -> dynamic
  */
 typealias EventListener<E> = (E) -> Unit
 
+external interface EventEmitterModule {
+    @JsName("EventEmitter")
+    val eventEmitter: JsClass<EventEmitter>
+}
+
 external interface EventEmitter {
 
     /**

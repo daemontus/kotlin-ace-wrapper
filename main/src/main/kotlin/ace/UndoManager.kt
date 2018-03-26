@@ -2,6 +2,11 @@ package ace
 
 fun JsClass<UndoManager>.new() = constructor0Arg(this)
 
+external interface UndoManagerModule {
+    @JsName("UndoManager")
+    val undoManager: JsClass<UndoManager>
+}
+
 /**
  * https://ace.c9.io/#nav=api&api=undomanager
  */

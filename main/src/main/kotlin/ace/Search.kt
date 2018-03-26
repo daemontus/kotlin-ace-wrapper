@@ -2,6 +2,11 @@ package ace
 
 fun JsClass<Search>.new(): Search = constructor0Arg(this)
 
+external interface SearchModule {
+    @JsName("Search")
+    val search: JsClass<Search>
+}
+
 /**
  * https://ace.c9.io/#nav=api&api=search
  */

@@ -4,6 +4,11 @@ fun JsClass<TokenIterator>.new(session: EditSession, initialRow: Int, initailCol
     return constructor3Arg(this, session, initialRow, initailColumn)
 }
 
+external interface TokenIteratorModule {
+    @JsName("TokenIterator")
+    val tokenIterator: JsClass<TokenIterator>
+}
+
 /**
  * https://ace.c9.io/#nav=api&api=token_iterator
  */

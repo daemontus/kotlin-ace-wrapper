@@ -4,6 +4,11 @@ fun JsClass<Editor>.new(renderer: VirtualRenderer, session: EditSession): Editor
     return constructor2Arg(this, renderer, session)
 }
 
+external interface EditorModule {
+    @JsName("Editor")
+    val editor: JsClass<Editor>
+}
+
 /**
  * https://ace.c9.io/#nav=api&api=editor
  */

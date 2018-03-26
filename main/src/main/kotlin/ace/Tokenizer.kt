@@ -4,6 +4,11 @@ fun <T: Tokenizer.Token, S: Any?> JsClass<Tokenizer<T, S>>.new(rules: dynamic, f
     return constructor2Arg(this, rules, flag)
 }
 
+external interface TokenizerModule {
+    @JsName("Tokenizer")
+    val tokenizer: JsClass<Tokenizer<*, *>>
+}
+
 /**
  * https://ace.c9.io/#nav=api&api=tokenizer
  */

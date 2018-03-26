@@ -4,17 +4,10 @@ object Module {
     object Internal
 }
 
-val Module.anchor
-    get() = "ace/anchor"
-
-val Module.range
-    get() = "ace/range"
-
-val Module.document
-    get() = "ace/document"
-
-val Module.Internal.eventEmitter
-    get() = "ace/lib/event_emitter"
+fun Module.anchor() = "ace/anchor"
+fun Module.range() = "ace/range"
+fun Module.document() = "ace/document"
+fun Module.Internal.eventEmitter() = "ace/lib/event_emitter"
 
 @Suppress("NOTHING_TO_INLINE", "UNUSED_PARAMETER")
 inline fun usedInJs(any: dynamic) {}

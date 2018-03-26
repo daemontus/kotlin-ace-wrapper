@@ -15,6 +15,11 @@ fun Document.removeOnChangeListener(eventListener: EventListener<Document.Delta>
     this.off("change", eventListener)
 }
 
+external interface DocumentModule {
+    @JsName("Document")
+    val document: JsClass<Document>
+}
+
 /**
  * https://ace.c9.io/#nav=api&api=document
  */

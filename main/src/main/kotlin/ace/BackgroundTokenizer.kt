@@ -18,6 +18,11 @@ fun BackgroundTokenizer<*, *, *>.removeOnUpdateListener(eventListener: EventList
     this.off("update", eventListener)
 }
 
+external interface BackgroundTokenizerModule {
+    @JsName("BackgroundTokenizer")
+    val backgroundTokenizer: JsClass<BackgroundTokenizer<*, *, *>>
+}
+
 /**
  * https://ace.c9.io/#nav=api&api=background_tokenizer
  */

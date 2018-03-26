@@ -6,6 +6,11 @@ fun JsClass<Selection>.new(session: EditSession): Selection {
     return constructor1Arg(this, session)
 }
 
+external interface SelectionModule {
+    @JsName("Selection")
+    val selection: JsClass<Selection>
+}
+
 /**
  * https://ace.c9.io/#nav=api&api=selection
  */

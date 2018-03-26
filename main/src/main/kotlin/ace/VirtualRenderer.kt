@@ -6,6 +6,11 @@ fun JsClass<VirtualRenderer>.new(container: Element, theme: String): VirtualRend
     return constructor2Arg(this, container, theme)
 }
 
+external interface VirtualRendererModule {
+    @JsName("VirtualRenderer")
+    val virtualRenderer: JsClass<VirtualRenderer>
+}
+
 /**
  * https://ace.c9.io/#nav=api&api=virtual_renderer
  */
