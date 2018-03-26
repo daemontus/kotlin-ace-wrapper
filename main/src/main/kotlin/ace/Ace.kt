@@ -7,6 +7,7 @@ import org.w3c.dom.Element
 /**
  * Global Ace singleton.
  */
+@JsName("ace")
 external val ACE: Ace
 
 /**
