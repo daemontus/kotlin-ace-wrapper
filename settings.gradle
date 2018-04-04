@@ -1,5 +1,5 @@
-rootProject.name = 'wrapper'
-include 'common'
-include 'worker'
-include 'main'
+rootProject.name = 'ace-wrapper'
+include 'ace-common'
+include 'ace-worker'
+include 'ace-web'
 
