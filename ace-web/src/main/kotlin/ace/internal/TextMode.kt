@@ -4,7 +4,7 @@ import ace.EditSession
 import ace.Tokenizer
 
 @JsName("ace_TextMode")
-external class TextMode {
+open external class TextMode {
 
     val tokenizer: Tokenizer<*, *>
 
