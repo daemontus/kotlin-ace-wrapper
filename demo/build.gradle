@@ -1,0 +1,36 @@
+apply plugin: 'kotlin2js'
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib-js:$kotlin_version"
+
+    compile project(":ace-web")
+    runtime project(":demo-worker")
+}
+
+clean.doFirst {
+    delete(web_dir)
+}
+
+task deploy(dependsOn: 'build') {
+    doLast {
+        copy {  // copy compiled code into lib folder
+            from new File("$buildDir/classes/kotlin/main")
+            into "${web_dir}/lib"
+        }
+        // copy dependencies into lib, each into a special subfolder
+        (configurations.compile + configurations.runtime).each { File file ->
+            copy {
+                from zipTree(file.absolutePath)
+                into "${web_dir}/lib/${file.name.replaceFirst(~/\.[^\\.]+$/, '')}/"
+                include { element ->
+                    def path = element.path
+                    path.endsWith(".js") && (path.startsWith("META-INF/resources/") || !path.startsWith("META-INF/"))
+                }
+            }
+        }
+        copy {  // copy resources directly into web root
+            from new File("$buildDir/resources/main")
+            into web_dir
+        }
+    }
+}

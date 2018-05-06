@@ -1,7 +1,6 @@
 package ace
 
 import ace.internal.EventEmitter
-import ace.internal.EventListener
 import org.w3c.dom.Element
 
 /**
@@ -24,9 +23,10 @@ open external class ScrollBar(parent: Element) : EventEmitter {
         val data: Int
     }
 
-}
+    // note: this requires special handling in class loader
+    @JsName("ace_ScrollBarV")
+    class Vertical(parent: Element) : ScrollBar
+    @JsName("ace_ScrollBarH")
+    class Horizontal(parent: Element) : ScrollBar
 
-@JsName("ace_ScrollBarV")
-external class ScrollBarV(parent: Element) : ScrollBar
-@JsName("ace_ScrollBarH")
-external class ScrollBarH(parent: Element) : ScrollBar
+}

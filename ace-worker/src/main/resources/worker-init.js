@@ -18,7 +18,7 @@ this.onmessage = function (e) {
             importScripts(url);
         });
         console.log("Running main function: "+init.module+"."+init.mainMethod);
-        this[init.module][init.mainMethod].call(init);
+        this[init.module][init.mainMethod].call(init.mainArguments);
         console.log('Worker loaded.');
     }
 };

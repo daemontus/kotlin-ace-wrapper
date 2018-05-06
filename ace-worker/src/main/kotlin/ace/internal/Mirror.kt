@@ -6,7 +6,7 @@ import ace.Document
 open external class Mirror(sender: Sender) {
 
     /**
-     * Use sender to communicate with teh starting script.
+     * Use sender to communicate with the starting script.
      */
     val sender: Sender
 

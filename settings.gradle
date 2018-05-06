@@ -2,4 +2,6 @@ rootProject.name = 'ace-wrapper'
 include 'ace-common'
 include 'ace-worker'
 include 'ace-web'
+include 'demo'
+include 'demo-worker'
 
