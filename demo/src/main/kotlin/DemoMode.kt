@@ -19,6 +19,7 @@ class DemoMode(
         // get current url minus the file name
         val pathPrefix = window.location.href.replace(Regex("[^/]*\$"), "")
 
+        // start client with all dependencies
         val client = startWorkerClient(
                 workerClassName = "DemoWorker",
                 workerInitUrl = "$pathPrefix/lib/ace-worker-1.3.1-0/worker-init.js",
@@ -36,6 +37,11 @@ class DemoMode(
                         "$pathPrefix/lib/demo-worker-1.3.1-0/demo-worker.js"
                 )
         )
+
+        // listen on error events from our parenthesis checking workers
+        client.on<dynamic>("errors") { event ->
+            editor.getSession().setAnnotations(event.data as Array<*>)
+        }
 
         client.attachToDocument(editor.getSession().getDocument())
 

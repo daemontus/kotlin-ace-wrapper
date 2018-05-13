@@ -11,12 +11,9 @@ this.onmessage = function (e) {
     if (!msg.command || !msg.args || msg.command !== "importScripts") {
         throw new Error("Expected first message with script prefix data. Instead, got "+msg);
     } else {
-        console.log('Worker loading started...');
         var dependencies = JSON.parse(msg.args);
         dependencies.forEach(function (url) {
-            console.log('Load dependency: ' + url);
             importScripts(url);
         });
-        console.log('Worker loaded.');
     }
 };
