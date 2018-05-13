@@ -4,4 +4,5 @@ include 'ace-worker'
 include 'ace-web'
 include 'demo'
 include 'demo-worker'
+include 'ace-theme'
 

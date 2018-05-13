@@ -21,6 +21,7 @@ ace_ScrollBar.ace_ScrollBarH = ace.require('ace/scrollbar').ScrollBarH;
 var ace_EditSession = ace.require('ace/edit_session').EditSession;
 var ace_Editor = ace.require('ace/editor').Editor;
 var ace_BackgroundTokenizer = ace.require('ace/background_tokenizer').BackgroundTokenizer;
+var ace_DOM = ace.require("ace/lib/dom");
 
 // load internal classes
 var ace_Cursor = ace.require('ace/layer/cursor').Cursor;

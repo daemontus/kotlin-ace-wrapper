@@ -1,9 +1,18 @@
 apply plugin: 'kotlin2js'
 
+// This property points to the folder where the project should be deployed.
+// Note: The directory should be outside of this project, because otherwise every deploy
+// will cause a project reindex (tons of new .js files)
+ext.web_dir = "${System.getProperty("user.home")}/www/${rootProject.name}/"
+
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-js:$kotlin_version"
 
+    // Main ace-wrapper, contains declarations of all important Ace classes.
     compile project(":ace-web")
+
+    // Worker module is not visible from the main module, but we want to include the worker scripts
+    // anyway, therefore we have to include id as runtime dependency.
     runtime project(":demo-worker")
 }
 

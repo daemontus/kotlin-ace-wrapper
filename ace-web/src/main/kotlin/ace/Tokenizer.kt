@@ -5,7 +5,7 @@ package ace
  */
 @JsName("ace_Tokenizer")
 open external class Tokenizer<T: Tokenizer.Token, S: Any?>(
-        rules: dynamic
+        rules: dynamic = definedExternally
 ) {
 
     open fun getLineTokens(line: String, startState: S?): Tokens<T, S>
