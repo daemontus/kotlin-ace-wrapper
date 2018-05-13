@@ -1,8 +1,7 @@
-import ace.internal.define
+import ace.internal.register
 
 fun main(args: Array<String>) {
-    define("demo/worker", arrayOf("require", "exports")) { _: dynamic, exports: dynamic ->
-        exports["DemoWorker"] = DemoWorker::class.js
-        exports
-    }
+    println("Running the worker main method.")
+    DemoWorker::class.js.register()
+    println("Worker class successfully registered.")
 }

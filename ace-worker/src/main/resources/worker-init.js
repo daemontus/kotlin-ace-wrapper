@@ -9,16 +9,14 @@
 this.onmessage = function (e) {
     var msg = e.data;
     if (!msg.command || !msg.args || msg.command !== "importScripts") {
-        throw new Error("Expected first message with script prefix data.");
+        throw new Error("Expected first message with script prefix data. Instead, got "+msg);
     } else {
         console.log('Worker loading started...');
-        var init = JSON.parse(msg.args);
-        init.dependencies.forEach(function (url) {
+        var dependencies = JSON.parse(msg.args);
+        dependencies.forEach(function (url) {
             console.log('Load dependency: ' + url);
             importScripts(url);
         });
-        console.log("Running main function: "+init.module+"."+init.mainMethod);
-        this[init.module][init.mainMethod].call(init.mainArguments);
         console.log('Worker loaded.');
     }
 };

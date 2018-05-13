@@ -2,6 +2,9 @@ package ace.internal
 
 import ace.Document
 
+/**
+ * Don't forget to register your workers using [register].
+ */
 @JsName("ace_Mirror")
 open external class Mirror(sender: Sender) {
 

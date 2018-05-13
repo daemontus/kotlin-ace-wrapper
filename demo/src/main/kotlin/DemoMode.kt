@@ -1,7 +1,4 @@
-import ace.EditSession
-import ace.Editor
-import ace.Tokenizer
-import ace.WorkerInit
+import ace.*
 import ace.internal.TextMode
 import ace.internal.WorkerClient
 import kotlin.browser.window
@@ -21,15 +18,27 @@ class DemoMode(
 
         // get current url minus the file name
         val pathPrefix = window.location.href.replace(Regex("[^/]*\$"), "")
-/*
-        val initData = WorkerInit(
-            dependencies = arrayOf(
-                    "$pathPrefix/lib/kotlin-stdlib-js-1.2.41/kotlin.js",
-                    "$pathPrefix/lib/ace-common-1.0.0/ace-common.js",
-                    "$pathPrefix/lib/ace-worker-1.0.0/ace-worker.js",
-                    "$pathPrefix/lib/ace"
-            )
-        )*/
-        return null
+
+        val client = startWorkerClient(
+                workerClassName = "DemoWorker",
+                workerInitUrl = "$pathPrefix/lib/ace-worker-1.3.1-0/worker-init.js",
+                dependencies = arrayOf(
+                        // Kotlin
+                        "$pathPrefix/lib/kotlin-stdlib-js-1.2.41/kotlin.js",
+
+                        // ace-worker
+                        "$pathPrefix/lib/ace-worker-1.3.1-0/ace-classes.js",
+                        "$pathPrefix/lib/ace-worker-1.3.1-0/class-loader.js",
+                        "$pathPrefix/lib/ace-common-1.3.1-0/ace-common.js",
+                        "$pathPrefix/lib/ace-worker-1.3.1-0/ace-worker.js",
+
+                        // demo-worker
+                        "$pathPrefix/lib/demo-worker-1.3.1-0/demo-worker.js"
+                )
+        )
+
+        client.attachToDocument(editor.getSession().getDocument())
+
+        return client
     }
 }

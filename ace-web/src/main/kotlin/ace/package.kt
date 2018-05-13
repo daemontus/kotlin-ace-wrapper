@@ -1,5 +1,7 @@
 package ace
 
+import ace.internal.WorkerClient
+
 val Events.ScrollBar_scroll: String
     get() = "scroll"
 
@@ -47,3 +49,23 @@ val Events.EditSession_tokenizerUpdate: String
 
 val Events.BackgroundTokenizer_update: String
     get() = "update"
+
+/**
+ * Start a new [WorkerClient] using the provided worker-init.js script.
+ *
+ * - [workerClassName] Class name of the worker which will be started. *Don't forget to register the worker class
+ * in your main method!*
+ * - [workerInitUrl] Url of the worker-init.js script.
+ * - [dependencies] Array of urls which should be loaded before the main method is executed.
+ */
+fun startWorkerClient(
+        workerClassName: String,
+        workerInitUrl: String,
+        dependencies: Array<String>
+): WorkerClient = WorkerClient(
+        topLevelNamespaces = arrayOf("ace"),
+        mod = "ace/worker/$workerClassName",
+        classname = workerClassName,
+        workerUrl = workerInitUrl,
+        importScripts = JSON.stringify(dependencies)
+)
