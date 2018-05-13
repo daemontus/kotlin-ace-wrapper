@@ -11,7 +11,6 @@ object DemoTokenizer : Tokenizer<DemoToken, Unit>(null) {
     private val operators = charArrayOf('+', '-', '*', '/')
 
     override fun getLineTokens(line: String, startState: Unit?): Tokens<DemoToken, Unit> {
-        println("Tokenize: $line")
         // override default getLineTokens functionality with our custom parsing rules:
 
         val tokens = ArrayList<DemoToken>()

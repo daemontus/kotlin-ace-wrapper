@@ -14,24 +14,35 @@ import ace.Tokenizer
  */
 sealed class DemoToken : Tokenizer.Token {
 
+    enum class Rule(val type: String) {
+        NUMBER("demo-number"),
+        OPERATOR("demo-operator"),
+        PARENTHESIS("demo-parenthesis"),
+        WHITESPACE("demo-whitespace"),
+        UNKNOWN("demo-unknown")
+        ;
+
+        override fun toString(): String = type
+    }
+
     data class Number(override val value: String) : DemoToken() {
-        override val type: String = "demo-number"
+        override val type: String = Rule.NUMBER.type
     }
 
     data class Operator(override val value: String) : DemoToken() {
-        override val type: String = "demo-operator"
+        override val type: String = Rule.OPERATOR.type
     }
 
     data class Parenthesis(override val value: String) : DemoToken() {
-        override val type: String = "demo-parenthesis"
+        override val type: String = Rule.PARENTHESIS.type
     }
 
     data class Whitespace(override val value: String) : DemoToken() {
-        override val type: String = "demo-whitespace"
+        override val type: String = Rule.WHITESPACE.type
     }
 
     data class Unknown(override val value: String) : DemoToken() {
-        override val type: String = "demo-unknown"
+        override val type: String = Rule.UNKNOWN.type
     }
 
 }
