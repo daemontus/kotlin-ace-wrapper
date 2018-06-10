@@ -1,16 +1,19 @@
+[![Release](https://jitpack.io/v/daemontus/kotlin-ace-wrapper.svg)](https://jitpack.io/#daemontus/kotlin-ace-wrapper)
+[![Build Status](https://travis-ci.org/daemontus/kotlin-ace-wrapper.svg?branch=master)](https://travis-ci.org/daemontus/kotlin-ace-wrapper)
+
 # Kotlin + Ace (wrapper)
 
-[Ace](https://ace.c9.io/) is a great **ebeddable code editor** which provides a ton of themes and language modes to work with. However, **writing new modes or syntax validators is not always easy**. Especially since in most cases, you end up writing one parser for the front-end (data entry) and then another for the back-end (data processing). To get rid of this duplicity, we want to use **the same language for both front-end and back-end**: [Kotlin](http://kotlinlang.org/). 
+[Ace](https://ace.c9.io/) is a great **embeddable code editor** which provides a ton of themes and language modes to work with. However, **writing new modes or syntax validators is not always easy**. Especially since in most cases, you end up writing one parser for the front-end (data entry) and then another for the back-end (data processing). To get rid of this duplicity, we want to use **the same language for both front-end and back-end**: [Kotlin](http://kotlinlang.org/). 
 
 Due to various design decisions made by Ace and Kotlin teams, this isn't always as easy as it could be. This library takes away the pain of working with Ace editor inside Kotlin by exposing Ace's API as standard Kotlin classes.
 
 # Getting started
 
 There are two main modules: 
- - **Web:** wrapper around Ace APIs for interaction with the code editors, such as EditSession or Tokenizer.
- - **Worker:** allows creation of web workers for [syntax validation](https://github.com/ajaxorg/ace/wiki/Syntax-validation).
+ - **Web:** wrapper around Ace APIs for interaction with the code editors, such as `EditSession` or `Tokenizer`.
+ - **Worker:** allows creation of web workers, mainly for [syntax validation](https://github.com/ajaxorg/ace/wiki/Syntax-validation).
 
-Note that the JS files in the worker module are meant to be run in a web worker context, and therefore you should never run them directly in your main website JS context. For more information about workers, see the **TODO** worker tutorial.
+Note that the JS files in the worker module are meant to be run in a web worker context, and therefore you should never run them directly in your main website JS context. For more information about workers, see the [worker tutorial](https://github.com/daemontus/kotlin-ace-wrapper/wiki/Syntax-validation-using-workers).
 
 ## Distribution
 
@@ -30,7 +33,7 @@ dependencies {
 }
 ```
 
-This gives you a jar file with all necessary javascript files. In the demo **TODO** build.gradle, you can see how to include these javscript files into your distribution.
+This gives you a jar file with all necessary Javascript files. In the demo [build.gradle](https://github.com/daemontus/kotlin-ace-wrapper/blob/master/demo/build.gradle), you can see how to deploy these Javscript files alongside your Kotlin/JS scripts.
 
 This form of distribution is primarily useful for JVM related projects. If you have other, more JS friendly, preferred method of distribution (npm, etc.), please create an issue/pull request with your suggestion.
 
@@ -58,21 +61,20 @@ To initialize the web module, simply load the provided JS files in the following
 <script src="ace-web.js" type="text/javascript"></script>
 ```
 
-Once you have the dependencies set-up, you can start loading your own Kotlin code. For a more detailed example see the **TODO** demo module or some of the tutorials.
+Once you have the dependencies set-up, you can start loading your own Kotlin code. For a more detailed example see the [demo module](https://github.com/daemontus/kotlin-ace-wrapper/tree/master/demo) or some of the tutorials.
 
 ## Tutorials
 
 To see how to use the wrapper efficiently, please refer to some of the following tutorials:
 
- - **TODO** Basic functionality.
- - **TODO** Custom themes.
- - **TODO** Custom syntax highlighting.
- - **TODO** Custom syntax validation via web workers.
+ - **TODO** [Custom themes](https://github.com/daemontus/kotlin-ace-wrapper/wiki/Custom-themes)
+ - **TODO** [Custom syntax highlighting](https://github.com/daemontus/kotlin-ace-wrapper/wiki/Custom-syntax-highlighting)
+ - **TODO** [Custom syntax validation via web workers](https://github.com/daemontus/kotlin-ace-wrapper/wiki/Syntax-validation-using-workers)
 
 ## Demo
 
-The repository contains a simple demo project **TODO** showcasing the functionality described in the tutorials. It is a simple editor with a custom theme, a custom tokenizer for syntax highlighting and custom syntax validation worker.
+The repository contains a simple [demo module](https://github.com/daemontus/kotlin-ace-wrapper/tree/master/demo) showcasing the functionality described in the tutorials. It is a simple editor with a custom theme, a custom tokenizer for syntax highlighting (recognizing numbers, parenthesis and numerical operators) and a custom syntax validation worker (checks for unclosed/unexpected parenthesis).
 
-### Documentation, completeness and reliability
+### Notes on documentation, completeness and reliability
 
 Currently, the wrapper exposes most methods documented in the Ace [API reference](https://ace.c9.io/#nav=api) and also some undocumented APIs which are necessary for extending Ace's basic functionality. However, there is no comprehensive documentation for the wrapper itself. It would be awesome to have a more detailed documentation in the future. However, this is just a small sideproject, so I mainly maintain and test the features I actually need and the documentation focuses mainly on tutorials. If you find some inconsistency with the actual Ace API or some missing features, feel free to send a pull request or create an issue. Ideally, please provide a use case for testing this problem too.
