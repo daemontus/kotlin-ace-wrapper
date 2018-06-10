@@ -47,7 +47,9 @@ enum class AnnotationType(val string: String) {
 /**
  * Convenience method for creating anonymous gutter annotations. Note that for most purposes, you can simply override
  * [GutterAnnotation] and call it a day, but if you also want to serialize the instances, you have to
- * make sure the fields have correct JS names.
+ * make sure the fields have correct JS names. If you override gutter annotation, the interface fields
+ * will be added as getters, which will be stripped away during serialisation. This way, the values are really
+ * fields.
  */
 // they are not unused, they are used by the external interface
 // the unchecked cast is, unfortunately, ok
