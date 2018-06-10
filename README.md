@@ -73,7 +73,7 @@ To see how to use the wrapper efficiently, please refer to some of the following
 
 ## Demo
 
-The repository contains a simple [demo module](https://github.com/daemontus/kotlin-ace-wrapper/tree/master/demo) showcasing the functionality described in the tutorials. It is a simple editor with a custom theme, a custom tokenizer for syntax highlighting (recognizing numbers, parenthesis and numerical operators) and a custom syntax validation worker (checks for unclosed/unexpected parenthesis).
+The repository contains a simple [demo module](https://github.com/daemontus/kotlin-ace-wrapper/tree/master/demo) showcasing the functionality described in the tutorials. It is a simple editor with a custom theme, a custom tokenizer for syntax highlighting (recognizing numbers, parenthesis and numerical operators) and a custom syntax validation worker (checks for unclosed/unexpected parenthesis). You can try it [here](https://daemontus.github.io/ace-wrapper/index.html).
 
 ### Notes on documentation, completeness and reliability
 
