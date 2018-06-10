@@ -19,4 +19,7 @@ external class WorkerClient(
 
     fun call(command: dynamic, args: dynamic, callback: dynamic)
 
+    interface Event<T> {
+        val data: T
+    }
 }

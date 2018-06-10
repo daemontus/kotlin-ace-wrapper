@@ -3,6 +3,8 @@
  *
  * It provides an implementation of the Ace Mirror worker, which provides access to
  * the Ace document on the main website together with update notifications.
+ *
+ * Note: Don't forget to add the class loader at the end of the file!
  */
 
 "no use strict";
@@ -2122,3 +2124,18 @@ ace.define("ace/lib/es5-shim",[], function(require, exports, module) {
     };
 
 });
+
+
+/**
+ * This is a class loader file for ace workers. It should be loaded after all ace classes but before the main module
+ * is loaded.
+ */
+
+// common classes
+var ace_EventEmitter = require("ace/lib/event_emitter").EventEmitter;
+var ace_Anchor = require("ace/anchor").Anchor;
+var ace_Document = require("ace/document").Document;
+var ace_Range = require("ace/range").Range;
+
+// worker specific
+var ace_Mirror = require("ace/worker/mirror").Mirror;

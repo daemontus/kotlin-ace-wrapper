@@ -1,7 +1,6 @@
 package ace
 
 import ace.internal.EventEmitter
-import ace.internal.EventListener
 import ace.internal.TextMode
 
 /**
@@ -151,7 +150,7 @@ external class EditSession : EventEmitter {
 
     fun screenToDocumentRow(screenRow: Int, screenColumn: Int): Int
 
-    fun setAnnotations(annotations: Array<dynamic>)
+    fun setAnnotations(annotations: Array<GutterAnnotation>)
 
     fun setBreakpoint(row: Int, className: String)
 

@@ -29,7 +29,6 @@ class DemoMode(
 
                         // ace-worker
                         "$pathPrefix/lib/ace-worker-1.3.1-0/ace-classes.js",
-                        "$pathPrefix/lib/ace-worker-1.3.1-0/class-loader.js",
                         "$pathPrefix/lib/ace-common-1.3.1-0/ace-common.js",
                         "$pathPrefix/lib/ace-worker-1.3.1-0/ace-worker.js",
 
@@ -39,11 +38,11 @@ class DemoMode(
         )
 
         // listen on error events from our parenthesis checking workers
-        client.on<dynamic>("errors") { event ->
-            editor.getSession().setAnnotations(event.data as Array<*>)
+        client.on<WorkerClient.Event<Array<GutterAnnotation>>>("errors") { event ->
+            editor.getSession().setAnnotations(event.data)
         }
 
-        client.attachToDocument(editor.getSession().getDocument())
+        client.attachToDocument(session.getDocument())
 
         return client
     }

@@ -1,5 +1,8 @@
+import ace.AnnotationType
+import ace.GutterAnnotation
 import ace.internal.Mirror
 import ace.internal.Sender
+import ace.makeGutterAnnotation
 
 class DemoWorker(sender: Sender) : Mirror(sender) {
 
@@ -11,13 +14,13 @@ class DemoWorker(sender: Sender) : Mirror(sender) {
         super.onUpdate()
         println("Worker update notification... running parenthesis check.")
 
-        val errors = document.getAllLines().mapIndexedNotNull { row, line ->
+        val errors: List<GutterAnnotation> = document.getAllLines().mapIndexedNotNull { row, line ->
             try {
                 val end = line.checkParentheses(row, 0)
-                if (end != line.length) throw GutterAnnotation(row, end, "Unexpected )")
+                if (end != line.length) throw error("Unexpected )")
                 null
-            } catch (error: GutterAnnotation) {
-                error
+            } catch (error: RuntimeException) {
+                makeGutterAnnotation(row, AnnotationType.ERROR, error.message)
             }
         }
 
@@ -31,14 +34,11 @@ class DemoWorker(sender: Sender) : Mirror(sender) {
         while (i < length && this[i] != ')') {
             if (this[i] == '(') {
                 i = checkParentheses(row, i+1)
-                if (i >= length || this[i] != ')') throw GutterAnnotation(row, i, "Unclosed (")
+                if (i >= length || this[i] != ')') throw error("Unclosed (")
             }
             i += 1
         }
         return i
     }
 
-    private data class GutterAnnotation(
-            val row: Int, val column: Int, val text: String, val type: String = "error"
-    ) : Throwable()
 }
