@@ -1,6 +1,6 @@
 package ace
 
-import ace.internal.EventEmitter
+import ace.lib.EventEmitter
 import org.w3c.dom.Element
 
 /**

@@ -1,6 +1,6 @@
 package ace
 
-import ace.internal.Cursor
+import ace.layer.Cursor
 
 /**
  * https://ace.c9.io/#nav=api&api=selection

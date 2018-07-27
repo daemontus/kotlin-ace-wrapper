@@ -1,6 +1,7 @@
 package ace.internal
 
 import ace.Document
+import ace.lib.EventEmitter
 
 @JsName("ace_WorkerClient")
 external class WorkerClient(

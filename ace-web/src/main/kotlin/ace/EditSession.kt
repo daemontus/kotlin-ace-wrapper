@@ -1,6 +1,6 @@
 package ace
 
-import ace.internal.EventEmitter
+import ace.lib.EventEmitter
 import ace.internal.TextMode
 
 /**
@@ -26,6 +26,7 @@ external class EditSession : EventEmitter {
 
     fun documentToScreenColumn(row: Int, docColumn: Int): Int
 
+    fun documentToScreenPosition(position: Document.Position): Document.Position
     fun documentToScreenPosition(docRow: Int, docColumn: Int): Document.Position
 
     fun documentToScreenRow(docRow: Int, docColumn: Int): Int

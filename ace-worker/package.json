@@ -1,0 +1,33 @@
+{
+  "name": "kotlin-ace-worker",
+  "version": "$wrapper_version",
+  "description": "A Kotlin/JS wrapper for the Ace code editor - web worker environment classes.",
+  "main": "ace-worker.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daemontus/kotlin-ace-wrapper.git"
+  },
+  "keywords": [
+    "kotlin",
+    "ace",
+    "wrapper",
+    "syntax highlighting",
+    "tokenizer"
+  ],
+  "author": "Samuel Pastva",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/daemontus/kotlin-ace-wrapper/issues"
+  },
+  "homepage": "https://github.com/daemontus/kotlin-ace-wrapper#readme",
+  "dependencies": {
+    "kotlin": "$kotlin_version",
+    "kotlin-ace-common": "$wrapper_version"
+  },
+  "files": [
+    "build/classes",
+    "build/resources",
+    "package.json",
+    "README.md"
+  ]
+}

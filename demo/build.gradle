@@ -20,6 +20,15 @@ clean.doFirst {
     delete(web_dir)
 }
 
+compileKotlin2Js {
+    kotlinOptions {
+        moduleKind = "commonjs"
+        sourceMap = true
+        sourceMapEmbedSources = "always"
+    }
+}
+
+
 task deploy(dependsOn: 'build') {
     doLast {
         copy {  // copy compiled code into lib folder

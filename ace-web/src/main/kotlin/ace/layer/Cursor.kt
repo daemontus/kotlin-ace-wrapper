@@ -1,10 +1,10 @@
-package ace.internal
+package ace.layer
 
 import ace.Document
 import ace.EditSession
 import org.w3c.dom.Element
 
-@JsName("ace_Cursor")
+@JsModule("kotlin-ace-loader!?id=ace/layer/cursor&name=Cursor")
 external class Cursor(parent: Element) {
 
     fun setPadding(padding: Int)
@@ -27,13 +27,13 @@ external class Cursor(parent: Element) {
 
     fun restartTimer()
 
-    fun getPixelPosition(position: Document.Position, onScreen: Boolean): Position
+    fun getPixelPosition(position: Document.Position?, onScreen: Boolean): PixelPosition
 
     fun update(config: dynamic)
 
     fun destroy()
 
-    interface Position {
+    interface PixelPosition {
         val left: Int
         val top: Int
     }

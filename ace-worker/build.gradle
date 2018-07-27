@@ -5,3 +5,13 @@ dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-js:$kotlin_version"
     compile project(":ace-common")
 }
+
+compileKotlin2Js {
+    kotlinOptions {
+        moduleKind = "commonjs"
+        sourceMap = true
+        sourceMapEmbedSources = "always"
+    }
+}
+
+setupNode()

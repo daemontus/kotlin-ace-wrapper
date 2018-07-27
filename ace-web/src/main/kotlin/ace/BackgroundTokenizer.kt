@@ -1,7 +1,6 @@
 package ace
 
-import ace.internal.EventEmitter
-import ace.internal.EventListener
+import ace.lib.EventEmitter
 
 /**
  * https://ace.c9.io/#nav=api&api=background_tokenizer
