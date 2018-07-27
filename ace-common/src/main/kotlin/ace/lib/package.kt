@@ -1,4 +1,4 @@
-package ace.internal
+package ace.lib
 
 /**
  * First argument is the emitted event, second argument is the event emitter emitting the event.

@@ -1,12 +1,11 @@
 package ace
 
-import ace.internal.EventEmitter
-import ace.internal.EventListener
+import ace.lib.EventEmitter
 
 /**
  * https://ace.c9.io/#nav=api&api=document
  */
-@JsName("ace_Document")
+@JsModule("kotlin-ace-loader!?id=ace/document&name=Document")
 open external class Document(text: String) : EventEmitter {
 
     constructor(lines: Array<String>)

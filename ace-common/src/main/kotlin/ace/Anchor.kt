@@ -1,12 +1,11 @@
 package ace
 
-import ace.internal.EventEmitter
-import ace.internal.EventListener
+import ace.lib.EventEmitter
 
 /**
  * https://ace.c9.io/#nav=api&api=anchor
  */
-@JsName("ace_Anchor")
+@JsModule("kotlin-ace-loader!?id=ace/anchor&name=Anchor")
 open external class Anchor(document: Document, row: Int, column: Int) : EventEmitter {
 
     fun detach()

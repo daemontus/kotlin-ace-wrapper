@@ -3,7 +3,7 @@ package ace
 /**
  * https://ace.c9.io/#nav=api&api=range
  */
-@JsName("ace_Range")
+@JsModule("kotlin-ace-loader!?id=ace/range&name=Range")
 open external class Range(startRow: Int, startColumn: Int, endRow: Int, endColumn: Int) {
 
     fun clipRows(firstRow: Int, lastRow: Int): Range

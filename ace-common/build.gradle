@@ -4,3 +4,13 @@ apply plugin: 'maven'
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-js:$kotlin_version"
 }
+
+compileKotlin2Js {
+    kotlinOptions {
+        moduleKind = "commonjs"
+        sourceMap = true
+        sourceMapEmbedSources = "always"
+    }
+}
+
+setupNode()

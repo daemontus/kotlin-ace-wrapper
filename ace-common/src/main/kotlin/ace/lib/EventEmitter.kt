@@ -1,9 +1,10 @@
-package ace.internal
+package ace.lib
 
 /**
  * Provides basic event-emitting functionality. Most classes
  * inherit from EventEmitter and can thus provide various types of events.
  */
+@JsModule("kotlin-ace-loader!?id=ace/lib/event_emitter&name=EventEmitter")
 abstract external class EventEmitter {
 
     /**

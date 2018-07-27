@@ -1,16 +1,11 @@
 package ace
 
-/**
- * Define extension properties on this object in order to declare events for specific classes.
- *
- * Example
- * val Events.MyClass_eventName
- *      get() = "event_name"
+/*
+ * Event names are defined as extension properties on the respective classes.
  */
-object Events
 
-val Events.Anchor_change: String
+val Document.EVENT_CHANGE: String
     get() = "change"
 
-val Events.Document_change: String
+val Anchor.EVENT_CHANGE: String
     get() = "change"

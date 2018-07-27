@@ -1,0 +1,26 @@
+{
+  "name": "kotlin-ace-common",
+  "version": "$wrapper_version",
+  "description": "A Kotlin/JS wrapper for the Ace code editor - shared classes between web and worker environments.",
+  "main": "ace-common.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daemontus/kotlin-ace-wrapper.git"
+  },
+  "keywords": [
+    "kotlin",
+    "ace",
+    "wrapper",
+    "syntax highlighting",
+    "tokenizer"
+  ],
+  "author": "Samuel Pastva",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/daemontus/kotlin-ace-wrapper/issues"
+  },
+  "homepage": "https://github.com/daemontus/kotlin-ace-wrapper#readme",
+  "dependencies": {
+    "kotlin": "$kotlin_version"
+  }
+}
