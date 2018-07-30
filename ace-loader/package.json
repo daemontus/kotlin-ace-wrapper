@@ -1,6 +1,6 @@
 {
   "name": "kotlin-ace-loader",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A webpack loader designed to load the classes of the Kotlin/JS Ace wrapper.",
   "main": "ace-loader.js",
   "repository": {
