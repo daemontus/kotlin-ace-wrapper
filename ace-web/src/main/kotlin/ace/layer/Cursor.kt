@@ -17,9 +17,9 @@ external class Cursor(parent: Element) {
 
     fun setSmoothBlinking(smoothBlinking: Boolean)
 
-    fun addCursor()
+    fun addCursor(): Element
 
-    fun removeCursor()
+    fun removeCursor(): Element
 
     fun hideCursor()
 

@@ -9,10 +9,10 @@ external class FontMetrics(parent: Element) {
 
     fun setPolling(value: dynamic)
 
-    fun getCharacterWidth(char: dynamic)
+    fun getCharacterWidth(char: dynamic): dynamic
 
     fun destroy()
 
-    fun transformCoordinates(clientPosition: dynamic, elementPosition: dynamic)
+    fun transformCoordinates(clientPosition: dynamic, elementPosition: dynamic): dynamic
 
 }

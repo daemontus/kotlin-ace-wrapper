@@ -1,7 +1,7 @@
 package ace.theme
 
 import ace.ACE
-import ace.internal.DOM
+import ace.lib.DOM
 
 /**
  * Register a [Theme] object object using the global [ACE] instance.

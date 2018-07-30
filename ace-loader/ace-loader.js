@@ -1,5 +1,7 @@
 /**
  * The loader simply receives an Ace id and a class name, loads the corresponding module and unwraps the class.
+ *
+ * If no name is provided, it simply assumes the module is the class.
  */
 module.exports = function() {
     console.log(this.target);
@@ -10,16 +12,21 @@ module.exports = function() {
     if (!id) {
         throw new Error("Missing Ace module id.");
     }
-    if (!name) {
-        throw new Error("Missing Ace class name.");
-    }
     if (this.target === 'webworker') {
         // Webworker does not have the full Ace as a dependency. The necessary classes
         // are loaded from global context.
-        return "var classes = require('kotlin-ace-worker/classes.js'); module.exports = classes.require('"+id+"')."+name;
+        if (!name) {
+            return "var classes = require('kotlin-ace-worker/classes.js'); module.exports = classes.require('"+id+"')";
+        } else {
+            return "var classes = require('kotlin-ace-worker/classes.js'); module.exports = classes.require('"+id+"')."+name;
+        }
     } else if (this.target === 'web') {
         // On web, load Ace, then load class.
-        return "module.exports = require('ace-builds').require('"+id+"')."+name;
+        if (!name) {
+            return "module.exports = require('ace-builds').require('"+id+"')";
+        } else {
+            return "module.exports = require('ace-builds').require('"+id+"')."+name;
+        }
     } else {
         throw new Error("Ace cannot be executed on target "+target);
     }

@@ -1,11 +1,9 @@
-package ace.internal
+package ace.lib
 
 import org.w3c.dom.Element
 
-@JsName("ace_DOM")
-external val DOM: Dom
-
-external interface Dom {
+@JsModule("kotlin-ace-loader!?id=ace/lib/dom")
+external object DOM {
 
     fun getDocumentHead(): Element
 

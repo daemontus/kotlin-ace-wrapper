@@ -146,7 +146,7 @@ external class Editor(renderer: VirtualRenderer, session: EditSession) {
     fun setShowPrintMargin(showPrintMargin: Boolean)
     fun setStyle(style: String)
     fun setTheme(theme: String)
-    fun setValue(vlaue: String, cursorPos: Int): String
+    fun setValue(value: String, cursorPos: Int): String
     fun setWrapBehavioursEnabled(enabled: Boolean)
     fun sortLines()
     fun splitLine()

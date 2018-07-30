@@ -131,7 +131,7 @@ external class EditSession : EventEmitter {
 
     fun redo()
 
-    fun redoChanges(deltas: Array<Document.Delta>, dontSelect: Boolean): Range
+    fun redoChanges(deltas: Array<Document.Delta>, doNotSelect: Boolean): Range
 
     fun remove(range: Range): Document.Position
 
@@ -189,7 +189,7 @@ external class EditSession : EventEmitter {
 
     fun undo()
 
-    fun undoChanges(deltas: Array<Document.Delta>, dontSelect: Boolean)
+    fun undoChanges(deltas: Array<Document.Delta>, doNotSelect: Boolean)
 
     interface TokenizerEvent {
         val data: Rows
