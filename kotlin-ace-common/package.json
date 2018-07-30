@@ -2,7 +2,7 @@
   "name": "kotlin-ace-common",
   "version": "$wrapper_version",
   "description": "A Kotlin/JS wrapper for the Ace code editor - shared classes between web and worker environments.",
-  "main": "ace-common.js",
+  "main": "kotlin-ace-common.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/daemontus/kotlin-ace-wrapper.git"

@@ -3,7 +3,7 @@ apply plugin: 'maven'
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-js:$kotlin_version"
-    compile project(":ace-common")
+    compile project(":kotlin-ace-common")
 }
 
 compileKotlin2Js {

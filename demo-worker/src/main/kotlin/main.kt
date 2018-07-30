@@ -1,4 +1,4 @@
-import ace.internal.register
+import ace.worker.register
 
 fun main(args: Array<String>) {
     println("Running the worker main method.")

@@ -1,4 +1,4 @@
-package ace.internal
+package ace.worker
 
 /**
  * Use the same way as ace.define, but on a global level in the worker script.

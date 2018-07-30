@@ -6,13 +6,10 @@ apply plugin: 'kotlin2js'
 // will cause a project reindex (tons of new .js files)
 ext.web_dir = "${System.getProperty("user.home")}/www/${rootProject.name}/"
 
-repositories {
-
-}
-
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-js:$kotlin_version"
-    implementation 'com.github.daemontus.kotlin-ace-wrapper:ace-web:f524ef8629'
+    compile project(":kotlin-ace-web")
+    //implementation 'com.github.daemontus.kotlin-ace-wrapper:kotlin-ace-web:445576b912'
 
     // Main ace-wrapper, contains declarations of all important Ace classes.
     //compileOnly project(":ace-web")
@@ -48,6 +45,7 @@ kotlinFrontend {
     }
     webpackBundle {
         bundleName = "main"
+        contentPath = file('src/main/resources')
     }
 }
 

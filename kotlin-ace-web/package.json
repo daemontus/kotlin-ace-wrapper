@@ -2,7 +2,7 @@
   "name": "kotlin-ace-web",
   "version": "$wrapper_version",
   "description": "A Kotlin/JS wrapper for the Ace code editor - web environment classes.",
-  "main": "ace-web.js",
+  "main": "kotlin-ace-web.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/daemontus/kotlin-ace-wrapper.git"

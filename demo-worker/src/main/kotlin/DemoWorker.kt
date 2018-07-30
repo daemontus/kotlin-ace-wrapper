@@ -1,7 +1,7 @@
 import ace.AnnotationType
 import ace.GutterAnnotation
-import ace.internal.Mirror
-import ace.internal.Sender
+import ace.worker.Mirror
+import ace.worker.Sender
 import ace.makeGutterAnnotation
 
 class DemoWorker(sender: Sender) : Mirror(sender) {

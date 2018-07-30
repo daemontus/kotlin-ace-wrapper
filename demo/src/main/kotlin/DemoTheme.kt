@@ -57,7 +57,8 @@ object DemoTheme : Theme {
         }
 
         .$name .ace_$UNKNOWN {
-            text-decoration: red underline;
+            -webkit-text-decoration-line: underline;
+            -webkit-text-decoration-color: red;
         }
 
     """.trimIndent()

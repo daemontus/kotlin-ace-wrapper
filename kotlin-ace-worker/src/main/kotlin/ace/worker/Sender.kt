@@ -1,9 +1,7 @@
-package ace.internal
+package ace.worker
 
 /**
  * Internal interface used to communicate with the worker starter.
- *
- * Technically, it also inherits [EventEmitter], but I don't see it used anywhere...
  */
 external interface Sender {
 

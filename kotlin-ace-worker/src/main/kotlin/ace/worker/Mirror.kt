@@ -1,11 +1,11 @@
-package ace.internal
+package ace.worker
 
 import ace.Document
 
 /**
  * Don't forget to register your workers using [register].
  */
-@JsName("ace_Mirror")
+@JsModule("kotlin-ace-loader!?id=ace/worker/mirror&name=Mirror")
 open external class Mirror(sender: Sender) {
 
     /**
