@@ -6,7 +6,7 @@ import org.w3c.dom.Element
 /**
  * https://ace.c9.io/#nav=api&api=ace
  */
-@JsModule("ace-builds/src-noconflict/ace")
+@JsModule("ace-builds")
 external object Ace {
 
     fun createEditSession(text: String, mode: Mode): EditSession

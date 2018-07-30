@@ -14,7 +14,7 @@ class DemoMode(
     override fun getTokenizer(): Tokenizer<*, *> = DemoTokenizer
 
     override fun createWorker(session: EditSession): WorkerClient? {
-        println("Creating worker.")
+        /*println("Creating worker.")
 
         // get current url minus the file name
         val pathPrefix = window.location.href.replace(Regex("[^/]*\$"), "")
@@ -44,6 +44,7 @@ class DemoMode(
 
         client.attachToDocument(session.getDocument())
 
-        return client
+        return client*/
+        return null
     }
 }

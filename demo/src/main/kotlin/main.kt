@@ -1,11 +1,12 @@
-import ace.ACE
+
+import ace.Ace
 import ace.Editor
 
 fun main(args: Array<String>) {
     println("Demo script just started!")
 
     println("First, we declare a new dark theme for the editor with custom styles for our tokens.")
-    val editor: Editor = ACE.edit("editor") // Start Ace editor
+    val editor: Editor = Ace.edit("editor") // Start Ace editor
     editor.setTheme(DemoTheme.id)
 
     println("Next, we want to initialize syntax highlighting. To do this, we need a text mode.")
