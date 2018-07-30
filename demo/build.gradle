@@ -12,9 +12,10 @@ repositories {
 
 dependencies {
     compile "org.jetbrains.kotlin:kotlin-stdlib-js:$kotlin_version"
+    implementation 'com.github.daemontus.kotlin-ace-wrapper:ace-web:f524ef8629'
 
     // Main ace-wrapper, contains declarations of all important Ace classes.
-    compileOnly project(":ace-web")
+    //compileOnly project(":ace-web")
 
     // Worker module is not visible from the main module, but we want to include the worker scripts
     // anyway, therefore we have to include id as runtime dependency.
