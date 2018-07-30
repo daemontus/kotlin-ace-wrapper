@@ -31,6 +31,11 @@ subprojects {
             into 'build/npm'
         }
 
+        task copyResources(type: Copy) {
+            from 'build/resources/main'
+            into 'build/npm'
+        }
+
         task copySources(type: Copy) {
             from '.'
             into 'build/npm'
@@ -50,6 +55,8 @@ subprojects {
         }
 
         copyClasses.dependsOn(build)
+        copyResources.dependsOn(build)
+        expandPackage.dependsOn(copyResources)
         expandPackage.dependsOn(copyClasses)
         expandPackage.dependsOn(copySources)
         install.dependsOn(expandPackage)

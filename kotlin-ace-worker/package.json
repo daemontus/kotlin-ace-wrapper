@@ -23,11 +23,5 @@
   "dependencies": {
     "kotlin": "$kotlin_version",
     "kotlin-ace-common": "$wrapper_version"
-  },
-  "files": [
-    "build/classes",
-    "build/resources",
-    "package.json",
-    "README.md"
-  ]
+  }
 }

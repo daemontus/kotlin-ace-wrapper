@@ -4,7 +4,6 @@
  * If no name is provided, it simply assumes the module is the class.
  */
 module.exports = function() {
-    console.log(this.target);
     var loaderUtils = require('loader-utils');
     var options = loaderUtils.parseQuery(this.resourceQuery);
     var id = options["id"];
