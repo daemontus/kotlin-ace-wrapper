@@ -5,7 +5,7 @@ import org.w3c.dom.Element
 /**
  * https://ace.c9.io/#nav=api&api=virtual_renderer
  */
-@JsName("ace_VirtualRenderer")
+@JsModule("kotlin-ace-loader!?id=ace/virtual_renderer&name=VirtualRenderer")
 external class VirtualRenderer(
         container: Element, theme: String
 ) {

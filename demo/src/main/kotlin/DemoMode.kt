@@ -1,6 +1,6 @@
 import ace.*
-import ace.internal.TextMode
-import ace.internal.WorkerClient
+import ace.mode.Mode
+import ace.worker.WorkerClient
 import kotlin.browser.window
 
 /**
@@ -9,7 +9,7 @@ import kotlin.browser.window
  */
 class DemoMode(
         private val editor: Editor
-) : TextMode() {
+) : Mode() {
 
     override fun getTokenizer(): Tokenizer<*, *> = DemoTokenizer
 

@@ -1,9 +1,9 @@
-package ace.internal
+package ace.worker
 
 import ace.Document
 import ace.lib.EventEmitter
 
-@JsName("ace_WorkerClient")
+@JsModule("kotlin-ace-loader!?id=ace/worker/worker_client&name=WorkerClient")
 external class WorkerClient(
         topLevelNamespaces: Array<String>,
         mod: String,

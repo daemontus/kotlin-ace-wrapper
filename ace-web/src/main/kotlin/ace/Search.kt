@@ -3,7 +3,7 @@ package ace
 /**
  * https://ace.c9.io/#nav=api&api=search
  */
-@JsName("ace_Search")
+@JsModule("kotlin-ace-loader!?id=ace/search&name=Search")
 open external class Search {
 
     fun find(session: EditSession): Range

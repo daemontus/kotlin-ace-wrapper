@@ -1,16 +1,16 @@
 package ace
 
 import ace.lib.EventEmitter
-import ace.internal.TextMode
+import ace.mode.Mode
 
 /**
  * https://ace.c9.io/#nav=api&api=edit_session
  */
-@JsName("ace_EditSession")
+@JsModule("kotlin-ace-loader!?id=ace/edit_session&name=EditSession")
 external class EditSession : EventEmitter {
 
-    constructor(text: String, mode: TextMode)
-    constructor(document: Document, mode: TextMode)
+    constructor(text: String, mode: Mode)
+    constructor(document: Document, mode: Mode)
 
     fun addDynamicMarker(marker: dynamic, inFront: Boolean): dynamic
 
@@ -53,7 +53,7 @@ external class EditSession : EventEmitter {
 
     fun getMarkers(inFront: Boolean): IntArray
 
-    fun getMode(): TextMode
+    fun getMode(): Mode
 
     fun getNewLineMode(): String
 
@@ -159,7 +159,7 @@ external class EditSession : EventEmitter {
 
     fun setDocument(document: Document)
 
-    fun setMode(mode: TextMode)
+    fun setMode(mode: Mode)
 
     fun setNewLineMode(newLineMode: String)
 

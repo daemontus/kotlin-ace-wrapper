@@ -5,7 +5,7 @@ import ace.lib.EventEmitter
 /**
  * https://ace.c9.io/#nav=api&api=background_tokenizer
  */
-@JsName("ace_BackgroundTokenizer")
+@JsModule("kotlin-ace-loader!?id=ace/background_tokenizer&name=BackgroundTokenizer")
 external class BackgroundTokenizer<T: Tokenizer.Token, S: Any?>(
         tokenizer: Tokenizer<T, S>, editor: Editor
 ) : EventEmitter {

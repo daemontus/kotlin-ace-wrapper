@@ -3,7 +3,7 @@ package ace
 /**
  * https://ace.c9.io/#nav=api&api=tokenizer
  */
-@JsName("ace_Tokenizer")
+@JsModule("kotlin-ace-loader!?id=ace/tokenizer&name=Tokenizer")
 open external class Tokenizer<T: Tokenizer.Token, S: Any?>(
         rules: dynamic = definedExternally
 ) {

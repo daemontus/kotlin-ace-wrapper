@@ -5,7 +5,7 @@ import ace.layer.Cursor
 /**
  * https://ace.c9.io/#nav=api&api=selection
  */
-@JsName("ace_Selection")
+@JsModule("kotlin-ace-loader!?id=ace/selection&name=Selection")
 external class Selection(session: EditSession) {
 
     fun addRange(range: Range, blockChangeEvents: Boolean)

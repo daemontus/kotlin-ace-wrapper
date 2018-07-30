@@ -1,53 +1,53 @@
 package ace
 
-import ace.internal.WorkerClient
+import ace.worker.WorkerClient
 
-val Events.ScrollBar_scroll: String
+val ScrollBar.EVENT_SCROLL: String
     get() = "scroll"
 
-val Events.EditSession_change: String
+val EditSession.EVENT_CHANGE: String
     get() = "change"
 
-val Events.EditSession_changeAnnotation: String
+val EditSession.EVENT_CHANGE_ANNOTATION: String
     get() = "changeAnnotation"
 
-val Events.EditSession_changeBackMarker: String
+val EditSession.EVENT_CHANGE_BACK_MARKER: String
     get() = "changeBackMarker"
 
-val Events.EditSession_changeFrontMarker: String
+val EditSession.EVENT_CHANGE_FRONT_MARKER: String
     get() = "changeFrontMarker"
 
-val Events.EditSession_changeBreakpoint: String
+val EditSession.EVENT_CHANGE_BREAKPOINT: String
     get() = "changeBreakpoint"
 
-val Events.EditSession_changeFold: String
+val EditSession.EVENT_CHANGE_FOLD: String
     get() = "changeFold"
 
-val Events.EditSession_changeMode: String
+val EditSession.EVENT_CHANGE_MODE: String
     get() = "changeMode"
 
-val Events.EditSession_changeOverwrite: String
+val EditSession.EVENT_CHANGE_OVERWRITE: String
     get() = "changeOverwrite"
 
-val Events.EditSession_changeScrollLeft: String
+val EditSession.EVENT_CHANGE_SCROLL_LEFT: String
     get() = "changeScrollLeft"
 
-val Events.EditSession_changeScrollTop: String
+val EditSession.EVENT_CHANGE_SCROLL_TOP: String
     get() = "changeScrollTop"
 
-val Events.EditSession_changeTabSize: String
+val EditSession.EVENT_CHANGE_TAB_SIZE: String
     get() = "changeTabSize"
 
-val Events.EditSession_changeWrapLimit: String
+val EditSession.EVENT_CHANGE_WRAP_LIMIT: String
     get() = "changeWrapLimit"
 
-val Events.EditSession_changeWrapMode: String
+val EditSession.EVENT_CHANGE_WRAP_MODE: String
     get() = "changeWrapMode"
 
-val Events.EditSession_tokenizerUpdate: String
+val EditSession.EVENT_TOKENIZER_UPDATE: String
     get() = "tokenizerUpdate"
 
-val Events.BackgroundTokenizer_update: String
+val BackgroundTokenizer<*, *>.EVENT_UPDATE: String
     get() = "update"
 
 /**

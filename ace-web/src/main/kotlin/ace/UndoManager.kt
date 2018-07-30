@@ -3,7 +3,7 @@ package ace
 /**
  * https://ace.c9.io/#nav=api&api=undomanager
  */
-@JsName("ace_UndoManager")
+@JsModule("kotlin-ace-loader!?id=ace/undomanager&name=UndoManager")
 external class UndoManager {
 
     fun execute(options: dynamic)

@@ -3,7 +3,7 @@ package ace
 /**
  * https://ace.c9.io/#nav=api&api=editor
  */
-@JsName("ace_Editor")
+@JsModule("kotlin-ace-loader!?id=ace/editor&name=Editor")
 external class Editor(renderer: VirtualRenderer, session: EditSession) {
 
     fun addSelectionMarker(orientedRange: Range): Range

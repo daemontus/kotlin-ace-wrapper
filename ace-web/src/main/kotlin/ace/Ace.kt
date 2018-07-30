@@ -1,22 +1,17 @@
 package ace
 
-import ace.internal.TextMode
+import ace.mode.Mode
 import org.w3c.dom.Element
-
-/**
- * Global Ace singleton.
- */
-@JsName("ace")
-external val ACE: Ace
 
 /**
  * https://ace.c9.io/#nav=api&api=ace
  */
-external interface Ace {
+@JsModule("ace-builds/src-noconflict/ace")
+external object Ace {
 
-    fun createEditSession(text: String, mode: TextMode): EditSession
+    fun createEditSession(text: String, mode: Mode): EditSession
 
-    fun createEditSession(text: Document, mode: TextMode): EditSession
+    fun createEditSession(text: Document, mode: Mode): EditSession
 
     fun edit(element: String): Editor
 

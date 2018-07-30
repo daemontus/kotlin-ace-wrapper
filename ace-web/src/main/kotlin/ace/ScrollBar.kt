@@ -6,7 +6,7 @@ import org.w3c.dom.Element
 /**
  * https://ace.c9.io/#nav=api&api=scrollbar
  */
-@JsName("ace_ScrollBar")
+@JsModule("kotlin-ace-loader!?id=ace/scrollbar&name=ScrollBar")
 open external class ScrollBar(parent: Element) : EventEmitter {
 
     fun getWidth(): Int
@@ -24,9 +24,9 @@ open external class ScrollBar(parent: Element) : EventEmitter {
     }
 
     // note: this requires special handling in class loader
-    @JsName("ace_ScrollBarV")
+    @JsModule("kotlin-ace-loader!?id=ace/scrollbar&name=ScrollBarV")
     class Vertical(parent: Element) : ScrollBar
-    @JsName("ace_ScrollBarH")
+    @JsModule("kotlin-ace-loader!?id=ace/scrollbar&name=ScrollBarH")
     class Horizontal(parent: Element) : ScrollBar
 
 }
