@@ -1,6 +1,6 @@
 buildscript {
     ext.loader_version = '1.0.3'    // Don't forget to update the version also in kotlin-ace-loader/package.json
-    ext.wrapper_version = '1.3.35'
+    ext.wrapper_version = '1.3.36'
     ext.kotlin_version = '1.2.60'
     ext.ace_version = '1.3.3'
 }
