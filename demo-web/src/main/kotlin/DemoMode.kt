@@ -1,7 +1,6 @@
 import ace.*
 import ace.mode.Mode
 import ace.worker.WorkerClient
-import kotlin.browser.window
 
 /**
  * A simple mode which replaces internal rule-based tokenizer with our custom implementation and
@@ -16,32 +15,8 @@ class DemoMode(
     override fun createWorker(session: EditSession): WorkerClient? {
         println("Creating worker.")
 
-        // get current url minus the file name
-        val pathPrefix = window.location.href.replace(Regex("[^/]*\$"), "")
-
         // start client with all dependencies
-        val client = WorkerClient(
-                topLevelNamespaces = arrayOf("ace"),
-                mod = "ace/worker/DemoWorker",
-                classname = "DemoWorker",
-                workerUrl = "worker.bundle.js",
-                importScripts = ""
-        )/* startWorkerClient(
-                workerClassName = "DemoWorker",
-                workerInitUrl = "$pathPrefix/lib/ace-worker-1.3.1-0/worker-init.js",
-                dependencies = arrayOf(
-                        // Kotlin
-                        "$pathPrefix/lib/kotlin-stdlib-js-1.2.41/kotlin.js",
-
-                        // ace-worker
-                        "$pathPrefix/lib/ace-worker-1.3.1-0/ace-classes.js",
-                        "$pathPrefix/lib/ace-common-1.3.1-0/ace-common.js",
-                        "$pathPrefix/lib/ace-worker-1.3.1-0/ace-worker.js",
-
-                        // demo-worker
-                        "$pathPrefix/lib/demo-worker-1.3.1-0/demo-worker.js"
-                )
-        )*/
+        val client = startWorkerFromBundle("DemoWorker", "worker.bundle.js")
 
         // listen on error events from our parenthesis checking workers
         client.on<WorkerClient.Event<Array<GutterAnnotation>>>("errors") { event ->
