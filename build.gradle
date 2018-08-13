@@ -1,13 +1,13 @@
 buildscript {
     ext.loader_version = '1.0.3'    // Don't forget to update the version also in kotlin-ace-loader/package.json
-    ext.wrapper_version = '1.3.34'
+    ext.wrapper_version = '1.3.35'
     ext.kotlin_version = '1.2.60'
     ext.ace_version = '1.3.3'
 }
 
 plugins {
     id 'kotlin2js' version '1.2.60' apply false
-    id 'kotlinFrontend' version '0.0.33' apply false
+    id 'org.jetbrains.kotlin.frontend' version '0.0.33' apply false
 }
 
 subprojects { project ->
@@ -31,6 +31,24 @@ subprojects { project ->
                 moduleKind = "commonjs"
                 sourceMap = true
                 sourceMapEmbedSources = "always"
+            }
+        }
+
+    }
+
+    if (project.name.startsWith("demo")) {
+
+        apply plugin: 'kotlin2js'
+        apply plugin: 'org.jetbrains.kotlin.frontend'
+
+        compileKotlin2Js {
+            kotlinOptions {
+                moduleKind = "commonjs"
+                sourceMap = true
+                sourceMapEmbedSources = "always"
+                metaInfo = true
+                outputFile = "$project.buildDir.path/js/${project.name}.js"
+                main = "call"
             }
         }
 
