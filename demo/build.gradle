@@ -8,8 +8,9 @@ ext.web_dir = "${System.getProperty("user.home")}/www/${rootProject.name}/"
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-js:$kotlin_version"
-    //compile project(":kotlin-ace-web")
-    implementation 'com.github.daemontus.kotlin-ace-wrapper:kotlin-ace-web:67ea224e5c'
+    compile project(":kotlin-ace-web")
+    compile project(":kotlin-ace-common")
+    //implementation 'com.github.daemontus.kotlin-ace-wrapper:kotlin-ace-web:77dd1410a'
 
     // Main ace-wrapper, contains declarations of all important Ace classes.
     //compileOnly project(":ace-web")

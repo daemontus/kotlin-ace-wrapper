@@ -3,7 +3,8 @@ apply plugin: 'kotlin2js'
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-js:$kotlin_version"
-    implementation 'com.github.daemontus.kotlin-ace-wrapper:kotlin-ace-worker:67ea224e5c'
+    implementation project(':kotlin-ace-worker')
+    //implementation 'com.github.daemontus.kotlin-ace-wrapper:kotlin-ace-worker:77dd1410a0'
 }
 
 compileKotlin2Js {
@@ -19,9 +20,9 @@ compileKotlin2Js {
 
 kotlinFrontend {
     npm {
-        dependency("kotlin-ace-loader", "1.0.1")
+        dependency("kotlin-ace-loader", "1.0.2")
         dependency("kotlin-ace-common", "1.3.33")
-        dependency("kotlin-ace-worker", "1.3.30")
+        dependency("kotlin-ace-worker", "1.3.33")
     }
     webpackBundle {
         bundleName = "worker"
