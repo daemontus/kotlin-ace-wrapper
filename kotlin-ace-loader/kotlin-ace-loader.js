@@ -11,22 +11,17 @@ module.exports = function() {
     if (!id) {
         throw new Error("Missing Ace module id.");
     }
+    var code;
     if (this.target === 'webworker') {
-        // Webworker does not have the full Ace as a dependency. The necessary classes
+        // Web worker does not have the full Ace as a dependency. The necessary classes
         // are loaded from global context.
-        if (!name) {
-            return "var classes = require('kotlin-ace-worker/classes.js'); module.exports = classes.require('"+id+"')";
-        } else {
-            return "var classes = require('kotlin-ace-worker/classes.js'); module.exports = classes.require('"+id+"')."+name;
-        }
+        code = "require('script-loader!kotlin-ace-worker/class-loader.js'); module.exports = ace.require('"+id+"')";
     } else if (this.target === 'web') {
         // On web, load Ace, then load class.
-        if (!name) {
-            return "module.exports = require('ace-builds').require('"+id+"')";
-        } else {
-            return "module.exports = require('ace-builds').require('"+id+"')."+name;
-        }
+        code = "module.exports = require('ace-builds').require('"+id+"')";
     } else {
         throw new Error("Ace cannot be executed on target "+target);
     }
+    if (name) code = code + "." + name;
+    return code;
 };

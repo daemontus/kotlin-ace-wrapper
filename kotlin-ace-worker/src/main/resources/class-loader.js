@@ -3,8 +3,6 @@
  *
  * It provides an implementation of the Ace Mirror worker, which provides access to
  * the Ace document on the main website together with update notifications.
- *
- * Note: Don't forget to add the class loader at the end of the file!
  */
 
 "no use strict";

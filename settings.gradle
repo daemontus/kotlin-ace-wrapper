@@ -1,6 +1,24 @@
+pluginManagement {
+    repositories {
+        mavenCentral()
+        jcenter()
+        maven { url "https://dl.bintray.com/kotlin/kotlin-eap" }
+    }
+    resolutionStrategy {
+        eachPlugin {
+            if (requested.id.id == "kotlin2js") {
+                useModule("org.jetbrains.kotlin:kotlin-gradle-plugin:${requested.version}")
+            }
+            if (requested.id.id == "kotlinFrontend") {
+                useModule("org.jetbrains.kotlin:kotlin-frontend-plugin:${requested.version}")
+            }
+        }
+    }
+}
 rootProject.name = 'kotlin-ace-wrapper'
+
 include 'kotlin-ace-common'
-include 'kotlin-ace-worker'
 include 'kotlin-ace-web'
-include 'demo'
+include 'kotlin-ace-worker'
+include 'demo-web'
 include 'demo-worker'

@@ -1,8 +1,8 @@
 {
-  "name": "kotlin-ace-worker",
-  "version": "$wrapper_version",
-  "description": "A Kotlin/JS wrapper for the Ace code editor - web worker environment classes.",
-  "main": "kotlin-ace-worker.js",
+  "name": "kotlin-ace-loader",
+  "version": "1.0.3",
+  "description": "A webpack loader designed to load the classes of the Kotlin/JS Ace wrapper.",
+  "main": "kotlin-ace-loader.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/daemontus/kotlin-ace-wrapper.git"
@@ -21,7 +21,6 @@
   },
   "homepage": "https://github.com/daemontus/kotlin-ace-wrapper#readme",
   "dependencies": {
-    "kotlin": "$kotlin_version",
-    "kotlin-ace-common": "$wrapper_version"
+    "script-loader": "0.7.2"
   }
 }

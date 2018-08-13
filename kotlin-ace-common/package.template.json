@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/daemontus/kotlin-ace-wrapper#readme",
   "dependencies": {
-    "kotlin": "$kotlin_version"
+    "kotlin": "$kotlin_version",
+    "kotlin-ace-loader": "$loader_version"
   }
 }
