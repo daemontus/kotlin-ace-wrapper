@@ -1,4 +1,5 @@
 [![Release](https://jitpack.io/v/daemontus/kotlin-ace-wrapper.svg)](https://jitpack.io/#daemontus/kotlin-ace-wrapper)
+[![npm version](https://badge.fury.io/js/kotlin-ace-web.svg)](https://badge.fury.io/js/kotlin-ace-web)
 [![Build Status](https://travis-ci.org/daemontus/kotlin-ace-wrapper.svg?branch=master)](https://travis-ci.org/daemontus/kotlin-ace-wrapper)
 
 # Kotlin + Ace (wrapper)
@@ -7,74 +8,58 @@
 
 Due to various design decisions made by Ace and Kotlin teams, this isn't always as easy as it could be. This library takes away the pain of working with Ace editor inside Kotlin by exposing Ace's API as standard Kotlin classes.
 
+## Project structure
+
+The library supports two contexts: **web** and **worker**. Web is the standard Ace environment while worker provides a reduced set of features for syntax validation web-workers. Furthermore, there is a common module for shared classes and declarations and a loader module which allows importing the Ace classes when using webpack.
+
+Finally, there is a demo worker and demo web module which illustrate the intended usage. The demo provides a very simple custom highlighter and validator which allow you to enter arbitrary arithmetic expression (numbers, +, -, /, *, parenthesis) and check that the parenthesis are correctly nested and closed. You can try the demo [here](https://daemontus.github.io/ace-wrapper/demo.html).
+
 # Getting started
 
-There are two main modules: 
- - **Web:** wrapper around Ace APIs for interaction with the code editors, such as `EditSession` or `Tokenizer`.
- - **Worker:** allows creation of web workers, mainly for [syntax validation](https://github.com/ajaxorg/ace/wiki/Syntax-validation).
+The library is designed to work with the [Kotlin frontend plugin](https://github.com/Kotlin/kotlin-frontend-plugin) as demonstrated in the [demo module](https://github.com/daemontus/kotlin-ace-wrapper/tree/master/demo-web). If you don't want to use the frontend plugin, you can still use the library with plain old webpack. 
 
-Note that the JS files in the worker module are meant to be run in a web worker context, and therefore you should never run them directly in your main website JS context. For more information about workers, see the [worker tutorial](https://github.com/daemontus/kotlin-ace-wrapper/wiki/Syntax-validation-using-workers).
+> Unfortunately, in order to properly load all Ace classes into the Kotlin context, a custom loader has to be used. When using webpack, this is facilitated by the provided [loader](https://github.com/daemontus/kotlin-ace-wrapper/tree/master/kotlin-ace-loader). If not using webpack, you will have to declare these modules in some other way. In case of problems, feel free to create a new issue.
 
-## Distribution
-
-You can include the library into any Gradle/Maven project using [Jitpack](https://jitpack.io/#daemontus/kotlin-ace-wrapper):
+To start working with the web context in a gradle project, you simply have to add Jitpack into your list of repositories and include the dependency:
 
 ```
 repositories {
-  ...
-  maven { url 'https://jitpack.io' }
+   ...
+   maven { url 'https://jitpack.io' }
 }
 
 dependencies {
-  implementation 'com.github.daemontus.kotlin-ace-wrapper:web:VERSION_HERE'
-  // Worker module should not be available in the web context, so your web modules 
-  // should not be able to access the module at compile time, only at runtime.
-  runtime 'com.github.daemontus.kotlin-ace-wrapper:worker:VERSION_HERE'  
+   ...
+   implementation 'com.github.daemontus.kotlin-ace-wrapper:kotlin-ace-web:1.3.36'
+}
+
+// If you are using the frontend plugin, inlude also the NPM dependency:
+kotlinFrontend {
+   npm {
+      dependency("kotlin-ace-web", "1.3.36")
+   }
 }
 ```
 
-This gives you a jar file with all necessary Javascript files. In the demo [build.gradle](https://github.com/daemontus/kotlin-ace-wrapper/blob/master/demo/build.gradle), you can see how to deploy these Javscript files alongside your Kotlin/JS scripts.
-
-This form of distribution is primarily useful for JVM related projects. If you have other, more JS friendly, preferred method of distribution (npm, etc.), please create an issue/pull request with your suggestion.
-
-### Versioning
-
-Each version of the wrapper should match the version of the Ace editor for which it was written, suffixed with a wrapper version number. So a wrapper of version `1.3.1-2` is a wrapper of Ace `1.3.1` and it is the version `2` for this specific Ace version. For best results, you should always use matching wrapper and Ace versions, but often no changes are necessary between versions, since Ace API is quite stable.
-
-## Set-up
-
-To initialize the web module, simply load the provided JS files in the following order:
-
+Then, you can start using Ace in your Kotlin code just as you would in JS:
 ```
-<!-- Ace Editor - not included in the distribution. -->
-<script src="ace.js" type="text/javascript"></script>
-
-<!-- Class loader - a small piece of JS which exposes the Ace classes to the Kotlin code. -->
-<script src="class-loader.js" type="text/javascript"></script>
-
-<!-- Kotlin JS standard library, obviously :) -->
-<script src="kotlin.js" type="text/javascript"></script>
-
-<!-- A few common classes shared by the web and worker contexts. -->
-<script src="ace-common.js" type="text/javascript"></script>
-<!-- All web specific APIs for editor manipulation. -->
-<script src="ace-web.js" type="text/javascript"></script>
+val editor = Ace.edit("editor")
+val mode = MyCustomMode(editor)
+editor.getSession().setMode(mode)
 ```
 
-Once you have the dependencies set-up, you can start loading your own Kotlin code. For a more detailed example see the [demo module](https://github.com/daemontus/kotlin-ace-wrapper/tree/master/demo) or some of the tutorials.
+For web workers, the process is a little more complicated (the web worker has to be created as a separate module, because the contexts can't mix). For full description, head to the [custom web worker tutorial](https://github.com/daemontus/kotlin-ace-wrapper/wiki/Syntax-validation-using-workers).
 
 ## Tutorials
 
 To see how to use the wrapper efficiently, please refer to some of the following tutorials:
 
- - **TODO** [Custom themes](https://github.com/daemontus/kotlin-ace-wrapper/wiki/Custom-themes)
- - **TODO** [Custom syntax highlighting](https://github.com/daemontus/kotlin-ace-wrapper/wiki/Custom-syntax-highlighting)
- - **TODO** [Custom syntax validation via web workers](https://github.com/daemontus/kotlin-ace-wrapper/wiki/Syntax-validation-using-workers)
+ - [Custom themes](https://github.com/daemontus/kotlin-ace-wrapper/wiki/Custom-themes)
+ - [Custom syntax highlighting](https://github.com/daemontus/kotlin-ace-wrapper/wiki/Custom-syntax-highlighting)
+ - [Custom syntax validation via web workers](https://github.com/daemontus/kotlin-ace-wrapper/wiki/Syntax-validation-using-workers)
 
-## Demo
-
-The repository contains a simple [demo module](https://github.com/daemontus/kotlin-ace-wrapper/tree/master/demo) showcasing the functionality described in the tutorials. It is a simple editor with a custom theme, a custom tokenizer for syntax highlighting (recognizing numbers, parenthesis and numerical operators) and a custom syntax validation worker (checks for unclosed/unexpected parenthesis). You can try it [here](https://daemontus.github.io/ace-wrapper/index.html).
-
-### Notes on documentation, completeness and reliability
+# Maintaining, completeness, documentation, versioning
 
 Currently, the wrapper exposes most methods documented in the Ace [API reference](https://ace.c9.io/#nav=api) and also some undocumented APIs which are necessary for extending Ace's basic functionality. However, there is no comprehensive documentation for the wrapper itself. It would be awesome to have a more detailed documentation in the future. However, this is just a small sideproject, so I mainly maintain and test the features I actually need and the documentation focuses mainly on tutorials. If you find some inconsistency with the actual Ace API or some missing features, feel free to send a pull request or create an issue. Ideally, please provide a use case for testing this problem too.
+
+The version numbers always match the used version of Ace suffixed with a patch version of the library. So a version `1.3.36` uses Ace `1.3.3` and it is the 6th patch version. While this is not ideal, for now, it seems to be the best solution which also correctly works with the semantic versioning used by npm.
