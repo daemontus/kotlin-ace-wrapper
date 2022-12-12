@@ -1,15 +1,17 @@
-dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-js"
-    implementation 'com.github.daemontus.kotlin-ace-wrapper:kotlin-ace-worker:1.3.36'
+plugins {
+    id 'org.jetbrains.kotlin.js' version "$kotlin_version"
 }
 
-kotlinFrontend {
-    npm {
-        dependency("kotlin-ace-worker", "1.3.36")
+kotlin {
+    js {
+        browser()
+        useCommonJs()
     }
+}
 
-    webpackBundle {
-        bundleName = "worker"
-        webpackConfigFile = "$project.projectDir.path/webpack.config.js"
-    }
+dependencies {
+    implementation project(":kotlin-ace-common")
+    implementation project(":kotlin-ace-worker")
+    implementation devNpm('kotlin-ace-loader', "$loader_version")
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-js:$kotlin_version"
 }

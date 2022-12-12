@@ -16,7 +16,7 @@ class DemoMode(
         println("Creating worker.")
 
         // start client with all dependencies
-        val client = startWorkerFromBundle("DemoWorker", "worker.bundle.js")
+        val client = startWorkerFromBundle("DemoWorker", "demo-worker.js")
 
         // listen on error events from our parenthesis checking workers
         client.on<WorkerClient.Event<Array<GutterAnnotation>>>("errors") { event ->

@@ -1,6 +1,16 @@
-dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-js"
-    implementation project(":kotlin-ace-common")
+plugins {
+    id 'org.jetbrains.kotlin.js' version "$kotlin_version"
 }
 
-setupNPM()
+kotlin {
+    js {
+        browser()
+        useCommonJs()
+    }
+}
+
+dependencies {
+    implementation project(":kotlin-ace-common")
+    implementation npm('kotlin-ace-loader', "$loader_version")
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-js:$kotlin_version"
+}

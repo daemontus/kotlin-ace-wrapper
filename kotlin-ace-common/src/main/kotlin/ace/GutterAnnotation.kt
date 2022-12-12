@@ -39,7 +39,7 @@ external interface GutterAnnotation {
 
 /**
  * Enum for representing [GutterAnnotation] types.
- * (It is not used by Ace, we use it internally inside wrapper APIs.
+ * (It is not used by Ace, we use it internally inside wrapper APIs.)
  */
 enum class AnnotationType(val string: String) {
     ERROR("error"), WARNING("warning"), INFO("info");

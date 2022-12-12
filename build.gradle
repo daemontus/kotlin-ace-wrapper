@@ -1,93 +1,16 @@
 buildscript {
-    ext.loader_version = '1.0.3'    // Don't forget to update the version also in kotlin-ace-loader/package.json
-    ext.wrapper_version = '1.3.36'
-    ext.kotlin_version = '1.2.60'
-    ext.ace_version = '1.3.3'
+    ext.loader_version = '1.1.0'    // Don't forget to update the version also in kotlin-ace-loader/package.json
+    ext.wrapper_version = '1.13.20'
+    ext.kotlin_version = '1.7.22'
+    ext.ace_version = '1.13.2'
 }
 
-plugins {
-    id 'kotlin2js' version '1.2.60' apply false
-    id 'org.jetbrains.kotlin.frontend' version '0.0.33' apply false
+repositories {
+    mavenCentral()
 }
 
-subprojects { project ->
-
-    group 'com.github.daemontus.kotlin-ace-wrapper'
-    version '1.3.34'
-
+allprojects {
     repositories {
         mavenCentral()
-        jcenter()
-        maven { url 'https://jitpack.io' }
     }
-
-    if (project.name.startsWith("kotlin-ace")) {
-
-        apply plugin: 'kotlin2js'
-        apply plugin: 'maven'
-
-        compileKotlin2Js {
-            kotlinOptions {
-                moduleKind = "commonjs"
-                sourceMap = true
-                sourceMapEmbedSources = "always"
-            }
-        }
-
-    }
-
-    if (project.name.startsWith("demo")) {
-
-        apply plugin: 'kotlin2js'
-        apply plugin: 'org.jetbrains.kotlin.frontend'
-
-        compileKotlin2Js {
-            kotlinOptions {
-                moduleKind = "commonjs"
-                sourceMap = true
-                sourceMapEmbedSources = "always"
-                metaInfo = true
-                outputFile = "$project.buildDir.path/js/${project.name}.js"
-                main = "call"
-            }
-        }
-
-    }
-
-    ext.setupNPM = {
-
-        //noinspection GroovyAssignabilityCheck
-        task copyItems(type: Copy) {
-            // Compiled Kotlin code
-            from('build/classes/kotlin/main')
-            // Bundled resources
-            from('build/resources/main')
-            // Source code
-            from('.') {
-                exclude 'build'
-                exclude 'build.gradle'
-                exclude 'package.template.json'
-            }
-            into('build/npm')
-        }
-
-        task expandPackage(type: Copy) {
-            from './package.template.json'
-            rename { "package.json" }
-            into 'build/npm'
-            expand(
-                    wrapper_version: "$wrapper_version",
-                    ace_version: "$ace_version",
-                    kotlin_version: "$kotlin_version",
-                    loader_version: "$loader_version"
-            )
-        }
-
-        copyItems.dependsOn(build)
-        expandPackage.dependsOn(copyItems)
-        install.dependsOn(expandPackage)
-    }
-
-
-
 }

@@ -1,6 +1,6 @@
 import ace.worker.register
 
-fun main(args: Array<String>) {
+fun main() {
     println("Running the worker main method.")
     DemoWorker::class.js.register()
     println("Worker class successfully registered.")

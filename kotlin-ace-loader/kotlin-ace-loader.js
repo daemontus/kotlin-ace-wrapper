@@ -4,12 +4,12 @@
  * If no name is provided, it simply assumes the module is the class.
  */
 module.exports = function() {
-    var loaderUtils = require('loader-utils');
-    var options = loaderUtils.parseQuery(this.resourceQuery);
+    var parseQuery = require('webpack-parse-query');
+    var options = parseQuery(this.resourceQuery);
     var id = options["id"];
     var name = options["name"];
     if (!id) {
-        throw new Error("Missing Ace module id.");
+        throw new Error("No Ace module id found in query: `"+this.resourceQuery+"`.");
     }
     var code;
     if (this.target === 'webworker') {
@@ -20,7 +20,7 @@ module.exports = function() {
         // On web, load Ace, then load class.
         code = "module.exports = require('ace-builds').require('"+id+"')";
     } else {
-        throw new Error("Ace cannot be executed on target "+target);
+        throw new Error("Ace cannot be executed on target `"+target+"`.");
     }
     if (name) code = code + "." + name;
     return code;

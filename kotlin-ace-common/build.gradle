@@ -1,5 +1,14 @@
-dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-js"
+
+plugins {
+    id 'org.jetbrains.kotlin.js' version "$kotlin_version"
 }
 
-setupNPM()
+kotlin {
+    js {
+        browser()
+    }
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-js:$kotlin_version"
+}

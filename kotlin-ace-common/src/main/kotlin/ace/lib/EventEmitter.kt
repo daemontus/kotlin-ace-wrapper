@@ -5,6 +5,7 @@ package ace.lib
  * inherit from EventEmitter and can thus provide various types of events.
  */
 @JsModule("kotlin-ace-loader!?id=ace/lib/event_emitter&name=EventEmitter")
+@JsNonModule
 abstract external class EventEmitter {
 
     /**

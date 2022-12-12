@@ -1,25 +1,24 @@
-dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-js"
-    implementation 'com.github.daemontus.kotlin-ace-wrapper:kotlin-ace-web:1.3.36'
+plugins {
+    id 'org.jetbrains.kotlin.js' version "$kotlin_version"
 }
 
-kotlinFrontend {
-    npm {
-        dependency("kotlin-ace-web", "1.3.36")
+kotlin {
+    js {
+        browser()
+        useCommonJs()
     }
+}
 
-    webpackBundle {
-        bundleName = "web"
-        // This is the path where demo.html is copied and where we also deliver the worker bundle.
-        contentPath = file('build/resources/main')
-    }
+dependencies {
+    implementation project(":kotlin-ace-common")
+    implementation project(":kotlin-ace-web")
+    implementation devNpm('kotlin-ace-loader', "$loader_version")
+    implementation npm('ace-builds', '1.14.0')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-js:$kotlin_version"
 }
 
 // Copy the worker bundle from worker module to content path.
 task copyWorkerBundle(type: Copy) {
-    from('../demo-worker/build/bundle/worker.bundle.js')
-    into('build/resources/main')
+    from "$rootDir/demo-worker/build/distributions/demo-worker.js"
+    into "$rootDir/demo-web/build/processedResources/js/main"
 }
-
-copyWorkerBundle.dependsOn(":demo-worker:webpack-bundle")
-run.dependsOn(copyWorkerBundle)

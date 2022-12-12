@@ -1,6 +1,6 @@
 {
   "name": "kotlin-ace-loader",
-  "version": "1.0.3",
+  "version": "1.1.0",
   "description": "A webpack loader designed to load the classes of the Kotlin/JS Ace wrapper.",
   "main": "kotlin-ace-loader.js",
   "repository": {
@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/daemontus/kotlin-ace-wrapper#readme",
   "dependencies": {
-    "script-loader": "0.7.2"
+    "script-loader": "0.7.2",
+    "webpack-parse-query": "1.0.0"
   }
 }
